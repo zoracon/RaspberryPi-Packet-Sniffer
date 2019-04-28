@@ -18,13 +18,13 @@ sudo bash -c "echo 'interface wlan0' >> /etc/dhcpcd.conf"
 sudo bash -c "echo 'static ip_address=172.24.1.1/24' >> /etc/dhcpcd.conf"
 
 # Download the hostapd config, enable the service
-sudo wget -O /etc/hostapd/hostapd.conf https://raw.githubusercontent.com/Hainish/RaspberryPi-Packet-Sniffer/master/hostapd.conf
+sudo wget -O /etc/hostapd/hostapd.conf https://raw.githubusercontent.com/zoracon/RaspberryPi-Packet-Sniffer/master/hostapd.conf
 sudo bash -c "echo 'DAEMON_CONF="/etc/hostapd/hostapd.conf"' > /etc/default/hostapd"
 sudo systemctl unmask hostapd.service
 sudo systemctl enable hostapd
 
 # Download the dnsmasq config, enable the service
-sudo wget -O /etc/dnsmasq.conf https://raw.githubusercontent.com/Hainish/RaspberryPi-Packet-Sniffer/master/dnsmasq.conf
+sudo wget -O /etc/dnsmasq.conf https://raw.githubusercontent.com/zoracon/RaspberryPi-Packet-Sniffer/master/dnsmasq.conf
 sudo systemctl enable dnsmasq
 
 # Make sure packet forwarding is enabled on boot
@@ -48,7 +48,7 @@ cd ..
 
 # Install the latest mitmproxy and download a script which forwards http & https requests through it
 sudo pip3.7 install mitmproxy
-wget https://raw.githubusercontent.com/Hainish/RaspberryPi-Packet-Sniffer/master/mitm.sh
+wget https://raw.githubusercontent.com/zoracon/RaspberryPi-Packet-Sniffer/master/mitm.sh
 chmod +x mitm.sh
 
 # Reboot to start dnsmasq, hostapd and apply ip forwarding.
